@@ -1,20 +1,23 @@
-package com.transactional.practicetransactional.model;
+package com.transactional.practicetransactional.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class PaymentInfo {
+@Data
+@Table(name = "orderInfo")
+public class OrderInfo {
     @Id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String productName;
-    private Double amount;
+    private String status;
 }
