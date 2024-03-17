@@ -1,23 +1,27 @@
 package com.transactional.practicetransactional.Controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.transactional.practicetransactional.Dto.OrderAck;
-import com.transactional.practicetransactional.Dto.OrderReqest;
+import com.transactional.practicetransactional.Dto.OrderRequest;
+import com.transactional.practicetransactional.Dto.OrderResponse;
 import com.transactional.practicetransactional.Service.OrderService;
 
 @RestController
+@RequestMapping("/orders")
 public class OrderController {
 
-    @Autowired
-    private OrderService orderService;
+  private OrderService orderService;
 
-    @PostMapping("/orders")
-    public OrderAck placeOrder(@RequestBody OrderReqest orderReqest) {
-        return orderService.placeOrder(orderReqest);
+  public OrderController(OrderService orderService) {
+    this.orderService = orderService;
+  }
 
-    }
+  @PostMapping
+  public ResponseEntity<OrderResponse> placeOrder(@RequestBody OrderRequest orderRequest) {
+    return ResponseEntity.ok(orderService.placeOrder(orderRequest));
+  }
 }
