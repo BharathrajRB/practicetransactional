@@ -2,7 +2,7 @@ package com.transactional.practicetransactional.Service.Impl;
 
 import java.util.UUID;
 
-import javax.transaction.Transactional;
+// import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
@@ -13,6 +13,8 @@ import com.transactional.practicetransactional.Repository.PaymentRepository;
 import com.transactional.practicetransactional.Service.OrderService;
 import com.transactional.practicetransactional.model.Order;
 import com.transactional.practicetransactional.model.Payment;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class OrderServiceImpl implements OrderService {
